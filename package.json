@@ -1,0 +1,19 @@
+{
+  "name": "express_auth_react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maleficush/express_auth_react.git"
+  },
+  "author": "maleficush",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maleficush/express_auth_react/issues"
+  },
+  "homepage": "https://github.com/maleficush/express_auth_react#readme"
+}
