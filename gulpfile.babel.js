@@ -34,7 +34,7 @@ gulp.task('babel', shell.task([
     'babel src --out-dir app'
 ]));
 
- 
+
 
 let express;
 
