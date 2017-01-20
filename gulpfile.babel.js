@@ -3,20 +3,24 @@ import shell from 'gulp-shell';
 import rimraf from 'rimraf';
 import run from 'run-sequence';
 import watch from 'gulp-watch';
-import server from 'gulp-live-server'
+import server from 'gulp-live-server';
+import typescript from 'gulp-typescript';
+import sourcemaps from 'gulp-sourcemaps';
+
+const tsProject = typescript.createProject('tsconfig.json');
 
 const paths = {
-    js: ['./src/**/*.js'],
+    js: ['./src/**/*.js', './src/**/*.ts'],
     destination: './app'
 };
 
-gulp.task('default', cb =>{
-    run( 'server', 'build', 'watch', cb );
+gulp.task('default', cb => {
+    run( 'server', 'build', 'watch', 'ts',  cb );
 });
 
 
 gulp.task('build', cb => {
-    run( 'clean', 'flow', 'babel', 'restart', cb );
+    run( 'clean', 'flow', 'babel', 'ts', 'restart', cb );
 });
 
 // [clean] : clean build folder -> app
@@ -33,6 +37,14 @@ gulp.task('flow', shell.task([
 gulp.task('babel', shell.task([
     'babel src --out-dir app'
 ]));
+
+gulp.task('ts', () => {
+   return tsProject.src('src/*.ts')
+       .pipe( sourcemaps.init() )
+       .pipe( typescript( tsProject ) ).js
+       .pipe( sourcemaps.write( '.' ) )
+       .pipe( gulp.dest( './app' ) );
+});
 
 
 
