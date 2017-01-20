@@ -9,6 +9,8 @@ import sourcemaps from 'gulp-sourcemaps';
 
 const tsProject = typescript.createProject('tsconfig.json');
 
+// js의 위치와 ts의 위치
+// 최종적으로 컴파일된 js의 위치 설정
 const paths = {
     js: ['./src/**/*.js', './src/**/*.ts'],
     destination: './app'
