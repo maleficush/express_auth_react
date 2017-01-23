@@ -41,9 +41,9 @@ gulp.task('babel', shell.task([
 ]));
 
 gulp.task('ts', () => {
-   return tsProject.src('src/*.ts')
+   return tsProject.src( )
        .pipe( sourcemaps.init() )
-       .pipe( typescript( tsProject ) ).js
+       .pipe( tsProject() )
        .pipe( sourcemaps.write( '.' ) )
        .pipe( gulp.dest( './app' ) );
 });
